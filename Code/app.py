@@ -6,7 +6,8 @@ import os
 from schema import schema
 
 DATABASE = 'TestComp1'
-PASSWORD = os.environ.get("MONGODB_PASSWORD")
+# print("Password: ")
+# PASSWORD = input()
 
 
 client = connect(DATABASE, host=f'mongodb+srv://TestComp1:TestComp1@cluster0.qk8pnen.mongodb.net/')
