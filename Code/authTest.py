@@ -14,7 +14,6 @@ password = input()
 
 
 cluster_url = "mongodb+srv://" + username + ":" + password + "@cluster0.qk8pnen.mongodb.net/"
-maxSevSelDelay = 1
 
 # Retriving the company database
 try:
