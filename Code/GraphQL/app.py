@@ -5,7 +5,7 @@ import os
 
 from schema import schema
 
-DATABASE = 'TestComp1'
+DATABASE = 'Test'
 print("Password: ")
 PASSWORD = input()
 

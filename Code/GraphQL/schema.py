@@ -13,6 +13,20 @@ class Item(MongoengineObjectType):
 class Query(graphene.ObjectType):
     node = Node.Field()
 
+
     all_item = MongoengineConnectionField(Item)
 
-schema = graphene.Schema(query=Query, types=[Item])
+schema = graphene.Schema(query=Query)
+
+
+# class Item(graphene.ObjectType):
+#     ItemID = graphene.Int()
+#     ItemName = graphene.String()
+#     Origin = graphene.String()
+
+# class Query(graphene.ObjectType):
+#     item = graphene.Field(Item)
+
+
+# schema = graphene.Schema(query=Query)
+    

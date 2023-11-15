@@ -9,8 +9,8 @@ from mongoengine.fields import (
 )
 
 class Company(Document):
+    
     meta = {"collection": "TestComp1"}
-    _id = ObjectId()
     ItemID = IntField()
     ItemName = StringField()
     Origin = StringField()
