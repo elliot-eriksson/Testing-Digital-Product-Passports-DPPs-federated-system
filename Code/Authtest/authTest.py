@@ -19,7 +19,7 @@ cluster_url = "mongodb+srv://" + username + ":" + password + "@cluster0.qk8pnen.
 try:
     cluster = MongoClient(cluster_url)
     db = cluster["Test"]
-    collection = db["TestComp1"]
+    collection = db["dataTest"]
     d = collection.find_one({"CompName": username}).get("Database")
 except pymongo.errors.OperationFailure:
     print("Auth fail")
