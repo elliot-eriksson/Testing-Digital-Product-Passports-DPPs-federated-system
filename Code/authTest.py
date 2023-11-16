@@ -19,16 +19,16 @@ cluster_url = "mongodb+srv://" + username + ":" + password + "@cluster0.qk8pnen.
 try:
     cluster = MongoClient(cluster_url)
     db = cluster["Test"]
-    collection = db["dataTest"]
+    collection = db["TestComp1"]
     d = collection.find_one({"CompName": username}).get("Database")
 except pymongo.errors.OperationFailure:
     print("Auth fail")
     sys.exit(1)
 
 # Input for new passport
-print("ItemName : ")
+print("Name : ")
 ItemName = input()
-print("Origin : ")
+print("Age : ")
 Origin = input()
 
 # Retriving new itemID and insterting new passport to company database
@@ -37,7 +37,7 @@ try:
     retrievalDataObject = collection.find_one(sort=[("ItemID", pymongo.DESCENDING)])
     newItemID = retrievalDataObject.get("ItemID") + 1
 
-    post = {"ItemID":newItemID, "ItemName":ItemName, "Origin":Origin,}
+    post = {"Person":newItemID, "Name":ItemName, "Age":Origin,}
     collection.insert_one(post)
 except pymongo.errors.OperationFailure:
     print("Auth fail2")
