@@ -6,10 +6,11 @@ import os
 from schema import schema
 
 DATABASE = 'Test'
-PASSWORD = os.environ.get("MONGODB_PASSWORD")
+print("Password: ")
+PASSWORD = input()
 
 
-client = connect(DATABASE, host=f'mongodb+srv://TestComp1:TestComp1@cluster0.qk8pnen.mongodb.net/')
+client = connect(DATABASE, host=f'mongodb+srv://TestComp1:{PASSWORD}@cluster0.qk8pnen.mongodb.net/')
 
 app = Flask(__name__)
 app.debug = True
