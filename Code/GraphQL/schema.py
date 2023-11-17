@@ -13,14 +13,14 @@ class Item(MongoengineObjectType):
 
 class UpdateItem(graphene.Mutation):
     class Arguments:
-        global_ID = graphene.ID(required = True)
+        ObjectID = graphene.ID(required = True)
         name =  graphene.String()
         origin = graphene.String()
         
     item = graphene.Field(lambda: Item)
 
-    def mutate(self, info, global_ID, name = None, origin = None):
-        company = CompanyModel.objects.get(id=global_ID)
+    def mutate(self, info, item_id, name = None, origin = None):
+        company = CompanyModel.objects.get(id=item_id)
         if name is not None:
             company.ItemName = name
         if origin is not None:
@@ -49,12 +49,11 @@ class Mutation(graphene.ObjectType):
 class Query(graphene.ObjectType):
     node = Node.Field()
     all_item = MongoengineConnectionField(Item)    
-    item = graphene.Field(Item, item_id=graphene.Int(required=True))
+    items = graphene.List(Item, item_id=graphene.Int(required=True))
 
-    def resolve_item(self, info, item_id):
-        item = CompanyModel.objects(ItemID=item_id).first()
-        return item
+    def resolve_items(self, info, item_id):
+        items = CompanyModel.objects(ItemID=item_id)
+        return items
+
     
 schema = graphene.Schema(query=Query, mutation=Mutation, types=[Item])
-
-    
