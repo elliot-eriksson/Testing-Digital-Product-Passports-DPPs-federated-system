@@ -47,9 +47,6 @@ class Mutation(graphene.ObjectType):
     update_item = UpdateItem.Field()
 
 class Query(graphene.ObjectType):
-    class Mutation(graphene.ObjectType):
-        create_item = CreateItem.Field()
-        update_item = UpdateItem.Field()
     node = Node.Field()
     all_item = MongoengineConnectionField(Item)    
     item = graphene.Field(Item, item_id=graphene.Int(required=True))
