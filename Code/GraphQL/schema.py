@@ -13,14 +13,14 @@ class Item(MongoengineObjectType):
 
 class UpdateItem(graphene.Mutation):
     class Arguments:
-        item_id = graphene.ID(required = True)
+        global_ID = graphene.ID(required = True)
         name =  graphene.String()
         origin = graphene.String()
         
     item = graphene.Field(lambda: Item)
 
-    def mutate(self, info, item_id, name = None, origin = None):
-        company = CompanyModel.objects.get(id=item_id)
+    def mutate(self, info, global_ID, name = None, origin = None):
+        company = CompanyModel.objects.get(id=global_ID)
         if name is not None:
             company.ItemName = name
         if origin is not None:
