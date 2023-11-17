@@ -51,9 +51,13 @@ class Query(graphene.ObjectType):
         create_item = CreateItem.Field()
         update_item = UpdateItem.Field()
     node = Node.Field()
-
     all_item = MongoengineConnectionField(Item)    
+    item = graphene.Field(Item, item_id=graphene.Int(required=True))
 
+    def resolve_item(self, info, item_id):
+        item = CompanyModel.objects(ItemID=item_id).first()
+        return item
+    
 schema = graphene.Schema(query=Query, mutation=Mutation, types=[Item])
 
     
