@@ -25,7 +25,7 @@ def authentication():
         except pymongo.errors.OperationFailure:
             print("Auth fail")
             sys.exit(1)
-        return db, d, username
+        return db, d
     
     
 

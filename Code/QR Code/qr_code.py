@@ -1,26 +1,9 @@
 import segno
 import sys
 import pymongo
-from pymongo import MongoClient
+from authTest import authentication
 
-
-# # Input for auth
-print("Username : ")
-username = input()
-print("Password : ")
-password = input()
-
-
-cluster_url = "mongodb+srv://" + username + ":" + password + "@cluster0.qk8pnen.mongodb.net/"
-
-try:
-    cluster = MongoClient(cluster_url)
-    db = cluster["Test"]
-    collection = db["dataTest"]
-    d = collection.find_one({"CompName": username}).get("Database")
-except pymongo.errors.OperationFailure:
-    print("Auth fail")
-    sys.exit(1)
+db, d, username = authentication()
 
 print("ItemID for QR creation : ")
 itemID = int(input())
@@ -34,5 +17,5 @@ except pymongo.errors.OperationFailure:
     print("Auth fail2")
     sys.exit(1)
 
-qrcode = segno.make_qr("ItemID = " + str(itemID) + "\n ItemName = " + itemName + "\n Origin = " + origin)
+qrcode = segno.make_qr("ItemID = " + str(itemID) + "\nItemName = " + itemName + "\nOrigin = " + origin)
 qrcode.save("qrcode_" + username + "_" + str(itemID) + ".png", scale = 5)
