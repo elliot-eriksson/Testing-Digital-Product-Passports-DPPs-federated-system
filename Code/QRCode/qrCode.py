@@ -1,5 +1,4 @@
 import segno
-import sys
 import pymongo
 import sys
 import os

@@ -13,7 +13,7 @@ sys.path.append(parent_dir)
 
 from Authtest.authTest import authentication
 
-db, d = authentication()
+db, d , username = authentication()
 print(db)
 print(d)
 
@@ -44,7 +44,7 @@ try:
                 updateQuery = {"_id":updateID}
                 newarray = [_id, name, company, origin]
                 updateValue = {"$push":{"ConnectingFrom": newarray}}
-                # collection.update_one(updateQuery, updateValue)
+                collection.update_one(updateQuery, updateValue)
             collection = db[d]
         # collection.update_one(myquery, newValue)
 
