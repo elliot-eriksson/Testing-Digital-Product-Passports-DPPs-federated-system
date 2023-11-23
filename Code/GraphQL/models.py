@@ -6,11 +6,16 @@ from mongoengine.fields import (
     ReferenceField,
     StringField,
     IntField,
+    BooleanField,
 )
 
 class Company(Document):
-    
+
     meta = {"collection": "TestComp1"}
     ItemID = IntField()
     ItemName = StringField()
     Origin = StringField()
+    IsNew = BooleanField()
+    ConnectingTo = ListField(StringField())
+    ConnectingFrom = ListField(StringField())
+    
