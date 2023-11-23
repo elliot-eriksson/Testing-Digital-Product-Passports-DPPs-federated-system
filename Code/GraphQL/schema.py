@@ -13,7 +13,7 @@ class Item(MongoengineObjectType):
 
 class UpdateItem(graphene.Mutation):
     class Arguments:
-        ObjectID = graphene.ID(required = True)
+        item_id = graphene.ID(required = True)
         name =  graphene.String()
         origin = graphene.String()
         
