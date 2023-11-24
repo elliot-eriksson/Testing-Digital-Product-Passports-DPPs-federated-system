@@ -39,8 +39,11 @@ class CreateItem(graphene.Mutation):
         # is_new = graphene.Boolean()
         # link_made_from = graphene.List(LMFM())
         # link_makes = graphene.List(LMM())
-        link_made_from = graphene.List(graphene.List(graphene.String))
-        link_makes = graphene.List(graphene.List(graphene.String))
+        # link_made_from = graphene.List(graphene.List(graphene.String))
+        # link_makes = graphene.List(graphene.List(graphene.String))
+        link_made_from = graphene.List(graphene.String)
+        link_makes = graphene.List(graphene.String)
+
 
     item = graphene.Field(lambda: Item)
 
