@@ -6,7 +6,7 @@ import os
 from schema import schema
 
 DATABASE = 'Test'
-print("Password: ")
+#print("Password: ")
 PASSWORD = input()
 
 

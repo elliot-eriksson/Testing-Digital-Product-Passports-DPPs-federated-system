@@ -7,7 +7,21 @@ from mongoengine.fields import (
     StringField,
     IntField,
     BooleanField,
+    EmbeddedDocumentListField,
+    EmbeddedDocument
 )
+
+class LinkMadeFromModel(Document):
+    name = "test"
+    field1 = StringField()
+    field2 = StringField()
+    field3 = StringField()
+
+class LinkMakesModel(Document):
+    name = "test2"
+    field1 = StringField()
+    field2 = StringField()
+    field3 = StringField()
 
 class Company(Document):
 
@@ -16,6 +30,16 @@ class Company(Document):
     ItemName = StringField()
     Origin = StringField()
     IsNew = BooleanField()
-    ConnectingTo = ListField(StringField())
-    ConnectingFrom = ListField(StringField())
+    LinkMadeFrom = ListField(StringField())
+    LinkMakes = ListField(StringField())
+
+    # LinkMadeFrom = EmbeddedDocumentListField(LinkMadeFromModel)
+    # LinkMakes = EmbeddedDocumentListField(LinkMakesModel)
+
+    # LinkMadeFrom = LinkMadeFromModel()
+    # LinkMakes = LinkMakesModel()
+
+    # LinkMadeFrom = ListField(ListField(StringField()))
+    # LinkMakes = ListField(ListField(StringField()))
+    
     

@@ -3,6 +3,8 @@ from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 
 from models import Company as CompanyModel
+from models import LinkMadeFromModel as LMFM
+from models import LinkMakesModel as LMM
 
 class Item(MongoengineObjectType):
     class Meta:
@@ -33,12 +35,17 @@ class CreateItem(graphene.Mutation):
     class Arguments:
         item_id = graphene.Int(required=True)
         item_name = graphene.String(required=True)
-        origin = graphene.String()
+        origin = graphene.String(required=True)
+        # is_new = graphene.Boolean()
+        # link_made_from = graphene.List(LMFM())
+        # link_makes = graphene.List(LMM())
+        link_made_from = graphene.List(graphene.List(graphene.String))
+        link_makes = graphene.List(graphene.List(graphene.String))
 
     item = graphene.Field(lambda: Item)
 
-    def mutate(self, info, item_id, item_name, origin=None):
-        company = CompanyModel(ItemID=item_id, ItemName=item_name, Origin=origin)
+    def mutate(self, info, item_id, item_name, origin=None, link_made_from=None, link_makes=None ):
+        company = CompanyModel(ItemID=item_id, ItemName=item_name, Origin=origin, IsNew=True, LinkMadeFrom=link_made_from, LinkMakes=link_makes)
         company.save()
         return CreateItem(item=company)
 
