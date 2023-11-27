@@ -48,7 +48,7 @@ class CreateItem(graphene.Mutation):
     item = graphene.Field(lambda: Item)
 
     def mutate(self, info, item_id, item_name, origin=None, link_made_from=None, link_makes=None ):
-        link_made_from_list = link_made_from.split(',')
+        link_made_from_list = link_made_from.split('.')
 
         company = CompanyModel(ItemID=item_id, ItemName=item_name, Origin=origin, IsNew=True, LinkMadeFrom=link_made_from_list, LinkMakes=link_makes)
 
