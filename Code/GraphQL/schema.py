@@ -36,21 +36,14 @@ class CreateItem(graphene.Mutation):
         item_id = graphene.Int(required=True)
         item_name = graphene.String(required=True)
         origin = graphene.String(required=True)
-        # is_new = graphene.Boolean()
-        # link_made_from = graphene.List(LMFM())
-        # link_makes = graphene.List(LMM())
-        # link_made_from = graphene.List(graphene.List(graphene.String))
-        # link_makes = graphene.List(graphene.List(graphene.String))
-        link_made_from = graphene.String()
+        link_made_from = graphene.List(graphene.String)
         link_makes = graphene.List(graphene.String)
 
 
     item = graphene.Field(lambda: Item)
 
     def mutate(self, info, item_id, item_name, origin=None, link_made_from=None, link_makes=None ):
-        link_made_from_list = link_made_from.split(',')
-
-        company = CompanyModel(ItemID=item_id, ItemName=item_name, Origin=origin, IsNew=True, LinkMadeFrom=link_made_from_list, LinkMakes=link_makes)
+        company = CompanyModel(ItemID=item_id, ItemName=item_name, Origin=origin, IsNew=True, LinkMadeFrom=link_made_from, LinkMakes=link_makes)
 
         company.save()
         return CreateItem(item=company)

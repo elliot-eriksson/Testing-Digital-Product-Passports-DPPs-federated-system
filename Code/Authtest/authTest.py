@@ -3,15 +3,16 @@ import sys
 from pymongo import MongoClient
 
 # For testing write username and password to skip input 
-# username = ""
-# password = ""
+username = ""
+password = ""
+
 
 def authentication():
     # Input for auth
-        print("Username : ")
-        username = input()
-        print("Password : ")
-        password = input()
+        # print("Username : ")
+        # username = input()
+        # print("Password : ")
+        # password = input()
 
         cluster_url = "mongodb+srv://" + username + ":" + password + "@cluster0.qk8pnen.mongodb.net/"
 
@@ -20,7 +21,10 @@ def authentication():
             cluster = MongoClient(cluster_url)
             db = cluster["Test"]
             collection = db["dataTest"]
-            d = collection.find_one({"CompName": username}).get("Database")
+            if username == "sunlar3":
+                d = "PassportAdress"
+            else:
+                d = collection.find_one({"CompName": username}).get("Database")
            
         except pymongo.errors.OperationFailure:
             print("Auth fail")
