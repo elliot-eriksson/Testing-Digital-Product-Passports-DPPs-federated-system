@@ -68,5 +68,5 @@ class Query(graphene.ObjectType):
         items = CompanyModel.objects(ItemID=item_id)
         return items
 
-    
+    #hej
 schema = graphene.Schema(query=Query, mutation=Mutation, types=[Item])
