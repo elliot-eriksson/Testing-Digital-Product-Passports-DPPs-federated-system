@@ -3,8 +3,11 @@ import sys
 from pymongo import MongoClient
 
 # For testing write username and password to skip input 
-username = "TestComp1"
-password = "TestComp1"
+# username = "TestComp1"
+# password = "TestComp1"
+
+username = "sunlar3"
+password = "HVhtsf2Ob4X9w8Cz"
 
 
 def authentication():

@@ -3,8 +3,6 @@ from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 
 from models import Company as CompanyModel
-from models import LinkMadeFromModel as LMFM
-from models import LinkMakesModel as LMM
 
 class Item(MongoengineObjectType):
     class Meta:

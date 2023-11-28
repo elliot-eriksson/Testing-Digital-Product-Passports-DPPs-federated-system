@@ -13,6 +13,7 @@ sys.path.append(parent_dir)
 
 from Authtest.authTest import authentication
 
+
 db, d , username = authentication()
 
 def getCollectionAndQuery():
@@ -28,6 +29,7 @@ def getCollectionAndQuery():
 try:
     collection = db[d]
     isNewPassportQuery = {"IsNew":True}
+    newValue = {"$set": {"IsNew": False}}
     newPassports = collection.find(isNewPassportQuery)
 
 
@@ -35,13 +37,12 @@ try:
         _id = data.get("_id")
         company = data.get("Database/collection")
         itemQuery = {"_id":_id}
-        collection = db[company]
+        collection = db[company]                       #Sets collection as the one from passportAddress
         newItem = collection.find(itemQuery)
         
         for data in newItem:
             origin = data.get("Origin")
             name = data.get("ItemName")
-            newValue = {"$set": {"IsNew": False}}
             #myquery = {"_id":_id}
             madeArray = data.get("LinkMadeFrom")
             

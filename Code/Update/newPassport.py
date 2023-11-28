@@ -12,12 +12,16 @@ parent_dir = os.path.join(current_dir, '..')
 sys.path.append(parent_dir)
 
 from Authtest.authTest import authentication
+from Update.postInsertWork import postInsertWork
 
 db, d , username = authentication()
+
+
 
 # Inserting passport address to PassportAdress collection
 try:
     collection = db[d]
+    postInsertWork(db,d)
     myquery = {"IsNew":True}
     retrievalDataObject = collection.find(myquery)
     i=0

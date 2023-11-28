@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_graphql import GraphQLView
 from mongoengine import connect
-import os
-
 from schema import schema
 
 DATABASE = 'Test'
