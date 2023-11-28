@@ -6,8 +6,8 @@ from pymongo import MongoClient
 # username = "TestComp1"
 # password = "TestComp1"
 
-username = "sunlar3"
-password = "HVhtsf2Ob4X9w8Cz"
+username = ""
+password = ""
 
 
 def authentication():
