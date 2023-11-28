@@ -36,7 +36,7 @@ try:
         myquery = {"_id":_id}
         collection.update_one(myquery, newValue)  
 except pymongo.errors.OperationFailure:
-    print("Auth fail2")
+    print("New Passport Error")
     sys.exit(1)
 
 print("Number of inserts: ", i)

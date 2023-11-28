@@ -21,7 +21,7 @@ try:
     itemName = retrievalDataObject.get("ItemName")
     origin = retrievalDataObject.get("Origin")
 except pymongo.errors.OperationFailure:
-    print("Auth fail2")
+    print("QR Error")
     sys.exit(1)
 
 qrcode = segno.make_qr("ItemID = " + str(itemID) + "\nItemName = " + itemName + "\nOrigin = " + origin)

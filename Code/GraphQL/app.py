@@ -4,11 +4,15 @@ from mongoengine import connect
 from schema import schema
 
 DATABASE = 'Test'
-print("Password: ")
-PASSWORD = input()
+def login():
+    print("COMPANY: ")
+    COMPANY = input()
+    print("Password: ")
+    PASSWORD = input()
+    return COMPANY, PASSWORD
 
-
-client = connect(DATABASE, host=f'mongodb+srv://TestComp1:{PASSWORD}@cluster0.qk8pnen.mongodb.net/')
+COMPANY, PASSWORD = login()
+client = connect(DATABASE, host=f'mongodb+srv://{COMPANY}:{PASSWORD}@cluster0.qk8pnen.mongodb.net/')
 
 app = Flask(__name__)
 app.debug = True

@@ -1,20 +1,18 @@
-from mongoengine import Document, EmbeddedDocument
-from bson.objectid import ObjectId
+from mongoengine import Document
 from mongoengine.fields import (
     DateTimeField,
     ListField,
-    ReferenceField,
     StringField,
     IntField,
-    BooleanField,
-    EmbeddedDocumentListField,
-    EmbeddedDocument
+    BooleanField
 )
+
+
 
 
 class Company(Document):
 
-    meta = {"collection": "TestComp1"}
+    meta = {"collection": "VOLVO"}
     ItemID = IntField()
     ItemName = StringField()
     Origin = StringField()

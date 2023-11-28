@@ -67,10 +67,6 @@ try:
                         newMadeArray[i].append(linkMadeFrom)
                         i += 1
 
-            # for data in madeArray:
-            #     removeLink = {"$pop":{"LinkMadeFrom": -1}}
-            #     collection.update_one(item_query, removeLink)
-            
             # Update LinkMadeFrom with the modified list
             collection = db[company]
             insertQuery = {"$push":{"LinkMadeFrom": newMadeArray}}
@@ -79,7 +75,7 @@ try:
         collection = db[d]
         collection.update_one(itemQuery, newValue)
 except pymongo.errors.OperationFailure:
-    print("Auth fail2")
+    print("Link Item Error")
     sys.exit(1)
 
 
