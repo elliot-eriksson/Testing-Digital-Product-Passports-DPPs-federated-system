@@ -38,7 +38,7 @@ class CreateItem(graphene.Mutation):
         origin = graphene.String(required=True)
         link_made_from = graphene.List(graphene.String)
         link_makes = graphene.List(graphene.String)
-
+        graphene.DateTime()
 
     item = graphene.Field(lambda: Item)
 
