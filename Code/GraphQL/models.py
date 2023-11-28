@@ -1,4 +1,5 @@
 from mongoengine import Document
+from config import configCollection
 from mongoengine.fields import (
     DateTimeField,
     ListField,
@@ -6,13 +7,14 @@ from mongoengine.fields import (
     IntField,
     BooleanField
 )
-
-
-
+COLLECTION = configCollection()
 
 class Company(Document):
 
-    meta = {"collection": "VOLVO"}
+    # print("Collecion: ")
+    # col = input()
+
+    meta = {"collection": COLLECTION}
     ItemID = IntField()
     ItemName = StringField()
     Origin = StringField()

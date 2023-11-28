@@ -2,16 +2,10 @@ from flask import Flask
 from flask_graphql import GraphQLView
 from mongoengine import connect
 from schema import schema
+from config import configLogin
 
-DATABASE = 'Test'
-def login():
-    print("COMPANY: ")
-    COMPANY = input()
-    print("Password: ")
-    PASSWORD = input()
-    return COMPANY, PASSWORD
+DATABASE, COMPANY, PASSWORD = configLogin()
 
-COMPANY, PASSWORD = login()
 client = connect(DATABASE, host=f'mongodb+srv://{COMPANY}:{PASSWORD}@cluster0.qk8pnen.mongodb.net/')
 
 app = Flask(__name__)
